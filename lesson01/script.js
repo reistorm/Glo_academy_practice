@@ -9,7 +9,7 @@ for (i = 0; i < arr.length; i++) {
 }
 console.log(`Произведение цифр числа num = ${multiNum}`);
 
-let powNumber = multiNum * multiNum * multiNum
+let powNumber = multiNum ** 3
 // console.log(`Результат в 3-ей степени ${powNumber}`)
 
 powNumber = String(powNumber).slice(0, 2) 
