@@ -6,18 +6,42 @@ let fullPrice = 500000;
 let adaptive = true;
 
 
-console.log(alert('Hello there'));
-console.log('Hello world');
 
-console.log(`Тип данных title - ${typeof title}, Тип данных fullPrice - ${typeof fullPrice}, Тип данных adaptive - ${typeof adaptive}`);
+title = prompt('Как называется ваш проект?');
+//console.log(`Проект - ${title}`);
 
-console.log(`Длина строки screens: ${screens.length}`)
+screens = prompt('Какие типы экранов нужно разработать?')
+//console.log(`Типы экранов: ${screens}`);
 
-console.log(`Стоимость верстки экранов screenPrice: ${screenPrice} рублей/ долларов/гривен/юани`);
+screenPrice = parseFloat(prompt('Сколько будет стоить данная работа?'))
+//console.log(`Стоимость работы: ${screenPrice}`);
 
-console.log(`Стоимость разработки сайта ${fullPrice} рублей/ долларов/гривен/юани`);
+adaptive = confirm(`Нужен ли адаптив на сайте?`)
 
-let arrayWords = screens.toLowerCase().split(',').map(item => item.trim());
-console.log(arrayWords);
+const service1 = prompt("Какой дополнительный тип услуги нужен?");
+const servicePrice1 = parseFloat(prompt("Сколько это будет стоить?")); 
 
-console.log(`Процент отката посреднику за работу: ${fullPrice * (rollbacke / 100)}`);
+const service2 = prompt("Какой еще дополнительный тип услуги нужен?"); 
+const servicePrice2 = parseFloat(prompt("Сколько это будет стоить?")); 
+
+
+fullPrice = screenPrice + servicePrice1 + servicePrice2;
+
+
+const servicePercentPrice = Math.ceil(fullPrice - rollbacke);
+console.log("Стоимость за вычетом отката:", servicePercentPrice);
+
+if (fullPrice >= 30000) {
+    console.log('Даем скидку в 10%');
+} else if (fullPrice >= 15000 && fullPrice < 30000) {
+    console.log('Даем скидку в 5%');
+} else if (fullPrice < 15000 && fullPrice > 0) {
+    console.log('Скидка не предусмотрена');
+} else if (fullPrice <= 0) {
+    console.log('Что-то пошло не так');
+}
+
+
+
+
+
