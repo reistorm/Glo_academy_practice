@@ -49,7 +49,7 @@ const getAllServicePrices = function (price1, price2) {
 }
 const allServicePrices = getAllServicePrices(servicePrice1, servicePrice2);
 
-console.log(allServicePrices);
+//console.log(allServicePrices);
 
 // 2) Объявить функцию getFullPrice. Функция возвращает сумму стоимости верстки и стоимости дополнительных услуг (screenPrice + allServicePrices). Результат сохраняем в переменную fullPrice. Тип - function declaration
 
