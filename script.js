@@ -21,3 +21,4 @@ let arrayWords = screens.toLowerCase().split(',').map(item => item.trim());
 console.log(arrayWords);
 
 console.log(`Процент отката посреднику за работу: ${fullPrice * (rollbacke / 100)}`);
+
