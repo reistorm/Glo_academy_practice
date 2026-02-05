@@ -12,19 +12,19 @@ let servicePercentPrice;
 let service1;
 let service2;
 
-const isNumber = function() {
+const isNumber = function (num) {
     return !isNaN(parseFloat(num) && isFinite(num))
 }
 
 const asking = function () {
     title = prompt('Как называется ваш проект?', "Калькулятор верстки");
     screens = prompt('Какие типы экранов нужно разработать?', "Простые, сложные")
-    screenPrice = +prompt('Сколько будет стоить данная работа?')
-    // проверка на введенное число, на пустую строку и строку из пробелов и при отмене выдает null
-    // isNaN(screenPrice) || screenPrice.trim() === "" || screenPrice === null
-    while(!isNumber(screenPrice)) {
+    //screenPrice = prompt('Сколько будет стоить данная работа?')
+    do {
         screenPrice = prompt('Сколько будет стоить данная работа?')
     }
+    while (!isNumber(screenPrice) || screenPrice.trim() === "");
+    screenPrice = parseFloat(screenPrice);
 
     adaptive = confirm(`Нужен ли адаптив на сайте?`)
 }
@@ -37,9 +37,16 @@ const getAllServicePrices = function () {
         } else if (i === 1) {
             service2 = prompt('Какой дополнительный тип услуги нужен?')
         }
-        sum += +prompt("Сколько это будет стоить?");
+        let input;
+        do {
+            input = prompt("Сколько это будет стоить?");
+            input = input.trim();
+        }
+        while (!isNumber(input) || input === "") {
+            sum += parseFloat(input);
+        }
     }
-    return sum
+    return sum;
     // return servicePrice1 + servicePrice2
 }
 
