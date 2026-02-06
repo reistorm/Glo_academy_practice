@@ -5,20 +5,36 @@ let rollbacke = 50;
 let fullPrice = 500000;
 let adaptive = true;
 
+title = prompt('Как называется ваш проект?');
 
-console.log(alert('Hello there'));
-console.log('Hello world');
+screens = prompt('Какие типы экранов нужно разработать?')
 
-console.log(`Тип данных title - ${typeof title}, Тип данных fullPrice - ${typeof fullPrice}, Тип данных adaptive - ${typeof adaptive}`);
+screenPrice = parseFloat(prompt('Сколько будет стоить данная работа?'))
 
-console.log(`Длина строки screens: ${screens.length}`)
+adaptive = confirm(`Нужен ли адаптив на сайте?`)
 
-console.log(`Стоимость верстки экранов screenPrice: ${screenPrice} рублей/ долларов/гривен/юани`);
+const service1 = prompt("Какой дополнительный тип услуги нужен?");
+const servicePrice1 = parseFloat(prompt("Сколько это будет стоить?"));
 
-console.log(`Стоимость разработки сайта ${fullPrice} рублей/ долларов/гривен/юани`);
+const service2 = prompt("Какой еще дополнительный тип услуги нужен?");
+const servicePrice2 = parseFloat(prompt("Сколько это будет стоить?"));
 
-let arrayWords = screens.toLowerCase().split(',').map(item => item.trim());
-console.log(arrayWords);
 
-console.log(`Процент отката посреднику за работу: ${fullPrice * (rollbacke / 100)}`);
+fullPrice = screenPrice + servicePrice1 + servicePrice2;
 
+const servicePercentPrice = Math.ceil(fullPrice - rollbacke);
+console.log("Стоимость за вычетом отката:", servicePercentPrice);
+
+const getRollbackMessage = function (price) {
+    if (price >= 30000) {
+        return "Даем скидку в 10%"
+    } else if (price >= 15000 && price < 30000) {
+        return "Даем скидку в 5%"
+    } else if (price < 15000 && price > 0) {
+        return "Скидка не предусмотрена"
+    } else if (price <= 0) {
+        return "Что-то пошло не так"
+    }
+}
+
+console.log(getRollbackMessage(fullPrice));
