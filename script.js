@@ -17,7 +17,6 @@ const appData = {
         appData.getFullPrice()
         appData.getServicePercentPrices();
         appData.getTitle()
-
         appData.logger();
     },
     isNumber: function (num) {
@@ -66,7 +65,10 @@ const appData = {
                 price = price.trim();
             }
             while (!this.isNumber(price) || price === "")
-            appData.services[name] = +price;
+            if (!appData.services[name]) {
+                appData.services[name] = []
+            }
+            appData.services[name].push(+price);
         }
 
         appData.adaptive = confirm(`Нужен ли адаптив на сайте?`)
@@ -74,10 +76,12 @@ const appData = {
     },
     addPrices: function () {
         for (let screen of appData.screens) {
-            appData.screenPrice += +screen.price
+            appData.screenPrice = appData.screens.reduce((sum, screen) => sum + (+screen.price), 0)
         }
         for (let key in appData.services) {
-            appData.allServicePrices += appData.services[key]
+            appData.services[key].forEach(price => {
+                appData.allServicePrices += price
+            });
         }
     },
     getFullPrice: function () {
